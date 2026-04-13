@@ -1,0 +1,25 @@
+import tkinter as tk
+
+def factorize():
+    n = int(entry.get())
+    result = []
+    i = 2
+    while i <= n:
+        while n % i == 0:
+            result.append(str(i))
+            n //= i
+        i += 1
+    output.config(text=" * ".join(result))
+
+root = tk.Tk()
+root.title("Bài 27 - Phân tích số")
+
+tk.Label(root, text="Nhập n:").pack()
+entry = tk.Entry(root)
+entry.pack()
+
+tk.Button(root, text="Phân tích", command=factorize).pack()
+output = tk.Label(root, text="")
+output.pack()
+
+root.mainloop()
