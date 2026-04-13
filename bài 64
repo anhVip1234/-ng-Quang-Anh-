@@ -1,0 +1,31 @@
+import tkinter as tk
+
+def is_power_of_2(n):
+    return n > 0 and (n & (n - 1)) == 0
+
+def process():
+    arr = list(map(int, entry_arr.get().split()))
+    x = int(entry_x.get())
+
+    count = sum(1 for i in arr if is_power_of_2(i))
+    new_arr = [i for i in arr if i != x]
+
+    output.config(text=f"Lũy thừa 2: {count}\nMảng mới: {new_arr}")
+
+root = tk.Tk()
+root.title("Bài 64")
+
+tk.Label(root, text="Nhập mảng (cách nhau bằng dấu cách)").pack()
+entry_arr = tk.Entry(root, width=40)
+entry_arr.pack()
+
+tk.Label(root, text="Nhập x cần xóa").pack()
+entry_x = tk.Entry(root)
+entry_x.pack()
+
+tk.Button(root, text="Xử lý", command=process).pack()
+
+output = tk.Label(root, text="")
+output.pack()
+
+root.mainloop()
